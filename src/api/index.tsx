@@ -68,3 +68,19 @@ export const usePopular = () => {
     queryFn: FetchPopular,
   });
 };
+
+ const detail = async (id : number) => {
+  const data = await axios.get(
+    `https://api.themoviedb.org/3/movie/${id}  `,options
+  );
+  return data.data
+};
+
+export const useDetail = (id  : number ) => {
+  return useQuery({
+    queryKey : ["detail"],
+    queryFn : () => detail(id)
+  })
+}
+
+

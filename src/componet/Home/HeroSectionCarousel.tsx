@@ -3,6 +3,7 @@ import { heroSection } from "../../type/type";
 import { AiFillPlayCircle } from "react-icons/ai";
 import Recommend from "./Recommend";
 import { useMediaQuery } from "@mantine/hooks";
+import { Link } from "react-router-dom";
 const useStyle = createStyles((theme) => ({
   heroImg: {
     height: 740,
@@ -71,12 +72,8 @@ const HeroSectionCarousel = ({ item }: { item: heroSection }) => {
           className={classes.heroImg}
         />
         <Box className={classes.imgContainer}>
-          <Box h={"100%"} w={ matches ? "100%" : "50%"}>
-            <Box
- 
-              component="h1"
-              className={classes.title}
-            >
+          <Box h={"100%"} w={matches ? "100%" : "50%"}>
+            <Box component="h1" className={classes.title}>
               {item.title}
             </Box>
             <Box
@@ -102,7 +99,7 @@ const HeroSectionCarousel = ({ item }: { item: heroSection }) => {
               </Box>
             </Box>
 
-            <MediaQuery smallerThan={"md"} styles={{display : "none"}}>
+            <MediaQuery smallerThan={"md"} styles={{ display: "none" }}>
               <Box py={10} component="div">
                 <Text
                   mb={5}
@@ -125,9 +122,10 @@ const HeroSectionCarousel = ({ item }: { item: heroSection }) => {
               right: "50%",
             }}
           >
-            <button className={classes.herobtn}>
-              <AiFillPlayCircle />
-            </button>
+           
+              <Link className={classes.herobtn} to={`/movie/${item.id}`}>
+                <AiFillPlayCircle />
+              </Link>
           </Box>
         </Box>
       </Box>

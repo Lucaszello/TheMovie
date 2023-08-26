@@ -18,6 +18,7 @@ const Recommend = ({ id }: { id: number }) => {
     <Box sx={{ display: "flex", alignItems: "center", gap: 10 }}>
       {data.map((item: any) => (
         <Box
+        key={item.id}
           component="div"
           sx={{
             position: "relative",

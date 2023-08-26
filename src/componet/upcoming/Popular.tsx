@@ -46,7 +46,6 @@ const UpComing = () => {
   const [loaded, setLoaded] = useState(false);
 
   const test = currentSlide === 0
-  console.log(test);
   
 
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
@@ -86,7 +85,7 @@ const UpComing = () => {
         <Box component="h2" mb={20} sx={{ color: "white" }}>
           Popular
         </Box>
-        <Box sx={{ position: "relative" }} className="navigation-wrapper">
+        <Box sx={{ position: "relative" }} h={290} className="navigation-wrapper">
           <Box
             sx={{
               position: "relative",
@@ -96,7 +95,7 @@ const UpComing = () => {
             className="keen-slider"
           >
             {data.map((item: heroSection) => (
-              <div className="keen-slider__slide number-slide1">
+              <div key={item.id} className="keen-slider__slide number-slide1">
                 <Comingbody item={item} />
               </div>
             ))}

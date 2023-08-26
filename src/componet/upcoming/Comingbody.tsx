@@ -1,6 +1,7 @@
 import { Box, RingProgress, Text, createStyles } from "@mantine/core";
 import { heroSection } from "../../type/type";
 import { AiFillPlayCircle } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 const useStyle = createStyles(() => ({
   container: {
@@ -36,7 +37,8 @@ const useStyle = createStyles(() => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    opacity : 0
+    opacity : 0,
+    overflow : "hidden"
   },
 }));
 
@@ -50,13 +52,13 @@ const Comingbody = ({ item }: { item: heroSection }) => {
         className={classes.backImg}
       />
       <Box className={`${classes.btnContainer} poBtn`}>
-        <button className={classes.btn}>
+        <Link to={`/movie/${item.id}`} className={classes.btn}>
           <AiFillPlayCircle />
-        </button>
+        </Link>
       </Box>
       <Box component="span">
         <RingProgress
-          sx={{ top: "-50px", backgroundColor: "black", borderRadius: "50%" }}
+          sx={{ top: "-65px", backgroundColor: "black", borderRadius: "50%" }}
           thickness={3}
           size={60}
           label={
