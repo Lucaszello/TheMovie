@@ -1,11 +1,11 @@
-import { Box, Container, createStyles } from "@mantine/core";
+import { Box, Container, Skeleton, createStyles } from "@mantine/core";
 import { usePopular } from "../../api";
 import { heroSection } from "../../type/type";
-import Comingbody from "./Comingbody";
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
-import { useState } from "react";
+import { useState , lazy , Suspense } from "react";
 import { FaChevronCircleRight, FaChevronCircleLeft } from "react-icons/fa";
+const Comingbody = lazy(() => import("./Comingbody"))
 
 const usestyle = createStyles(() => ({
   arrow: {
@@ -85,7 +85,11 @@ const UpComing = () => {
         <Box component="h2" mb={20} sx={{ color: "white" }}>
           Popular
         </Box>
-        <Box sx={{ position: "relative" }} h={290} className="navigation-wrapper">
+        <Box
+          sx={{ position: "relative" }}
+          h={290}
+          className="navigation-wrapper"
+        >
           <Box
             sx={{
               position: "relative",
@@ -96,7 +100,19 @@ const UpComing = () => {
           >
             {data.map((item: heroSection) => (
               <div key={item.id} className="keen-slider__slide number-slide1">
-                <Comingbody item={item} />
+                <Suspense
+                  fallback={
+                    <>
+                      <Skeleton
+                        height={250}
+                        width={"100%"}
+                        sx={{ backgroundColor: "#373a40" }}
+                      />
+                    </>
+                  }
+                >
+                  <Comingbody item={item} />
+                </Suspense>
               </div>
             ))}
             {test && (

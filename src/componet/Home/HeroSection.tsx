@@ -3,6 +3,7 @@ import HeroSectionCarousel from "./HeroSectionCarousel";
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
 import { heroSection } from "../../type/type";
+import HeroLoader from "../../Loader/heroLoader";
 
 const HeroSection = () => {
     const {data,isLoading,isError} = usefetchHero()
@@ -47,7 +48,7 @@ const HeroSection = () => {
 
      //loading
     if(isLoading){
-        return <h1>Loading...</h1>
+        return <HeroLoader/>
     }
 
     //isError

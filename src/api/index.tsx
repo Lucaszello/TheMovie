@@ -64,7 +64,7 @@ const FetchPopular = async () => {
 
 export const usePopular = () => {
   return useQuery({
-    queryKey: ["upComing"],
+    queryKey: ["popular"],
     queryFn: FetchPopular,
   });
 };
@@ -80,6 +80,22 @@ export const useDetail = (id  : number ) => {
   return useQuery({
     queryKey : ["detail"],
     queryFn : () => detail(id)
+  })
+}
+
+
+//movie
+const video = async(id : number) => {
+  const data = await axios.get(
+    `https://api.themoviedb.org/3/movie/${id}/videos `,options
+  );
+  return data.data.results
+}
+
+export const useVideo = (id : number)  => {
+  return useQuery({
+    queryKey : ["video"],
+    queryFn : () => video(id)
   })
 }
 

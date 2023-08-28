@@ -1,7 +1,8 @@
 import { Box } from "@mantine/core";
 import { Params, useParams } from "react-router-dom";
 import { useDetail } from "../../api";
-import DetailBody from "./DetailBody";
+import {lazy,Suspense} from "react"
+const DetailBody = lazy(() => import("./DetailBody") )
 
 const Detail = () => {
   const { id }: Readonly<Params<string>> = useParams();
@@ -13,7 +14,9 @@ const Detail = () => {
 
   return (
     <Box>
-      <DetailBody item={data} />
+      <Suspense fallback={<Box sx={{color : "white"}}>is Loading...</Box>}>
+        <DetailBody item={data} />
+      </Suspense>
     </Box>
   );
 };
