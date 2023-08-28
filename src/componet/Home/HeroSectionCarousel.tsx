@@ -22,7 +22,7 @@ const useStyle = createStyles((theme) => ({
     height: "100%",
     bottom: 0,
     backgroundImage:
-      "linear-gradient(to right, #000000e8, #121111cf, #1d1d1ca8, #2827274f, #33323212)",
+      "linear-gradient(to right, #000000e8, #121111cf, #1d1d1c5c, #28272700, #33323200)",
     width: "100%",
     textJustify: "auto",
     paddingBottom: rem(50),
@@ -53,9 +53,9 @@ const useStyle = createStyles((theme) => ({
       fontSize: rem(20),
       marginTop: 150,
     },
-      // [theme.fn.smallerThan("lg")]: {
-      //   height: 300,
-      // },
+    // [theme.fn.smallerThan("lg")]: {
+    //   height: 300,
+    // },
   },
 }));
 
