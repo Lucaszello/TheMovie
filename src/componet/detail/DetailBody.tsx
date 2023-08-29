@@ -179,7 +179,7 @@ const DetailBody = ({ item }: { item: detailProp }) => {
 
               {/* Watch Movie */}
               <Box onClick={() => setOpen(true)} className={classes.LinkBtn}>
-                <Box py={10} sx={{ display: "flex", alignItems: "center" }}>
+                <Box sx={{ display: "flex", alignItems: "center" }}>
                   Watch Now{" "}
                   <Box sx={{ fontSize: 14, paddingLeft: 5, paddingTop: 6 }}>
                     <FaPlay />

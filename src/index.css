@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Montserrat+Alternates:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap');
-* {
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Jost:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Montserrat+Alternates:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap');* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -8,7 +7,7 @@
 }
 
 body {
-  background-color: black !important;
+  background-color: #000000e8 !important ;
 }
 
 ::-webkit-scrollbar {
@@ -20,6 +19,16 @@ body {
 } */
 ::-webkit-scrollbar {
   background-color: rgba(255, 255, 255, 0.441);
+}
+
+
+.mantine-10m2vh4::after{
+  background: black ;
+}
+
+
+.mantine-10m2vh4::before{
+  background-color: #000000db;
 }
 
 

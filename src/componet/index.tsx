@@ -1,10 +1,13 @@
+import { Box } from "@mantine/core";
 import HeroSection from "./Home/HeroSection";
-import UpComing from "./upcoming/Popular";
+import Popular from "./Popular/Popular";
+import UpComing from "./UpComing/UpComing";
 const Home = () => {
   return (
     <div>
       <HeroSection />
-     <UpComing/>
+      <Popular />
+      <UpComing />
     </div>
   );
 };

@@ -100,3 +100,16 @@ export const useVideo = (id : number)  => {
 }
 
 
+//upComing 
+const upComing = async()  => {
+  const data = await axios.get("https://api.themoviedb.org/3/movie/upcoming"  , popularOption)
+  return data.data.results
+}
+
+export const useUpcoming = () => {
+  return useQuery({
+    queryKey : ["upcoming"],
+    queryFn  : upComing
+  })
+}
+

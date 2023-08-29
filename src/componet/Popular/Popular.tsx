@@ -5,7 +5,7 @@ import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
 import { useState , lazy , Suspense } from "react";
 import { FaChevronCircleRight, FaChevronCircleLeft } from "react-icons/fa";
-const Comingbody = lazy(() => import("./Comingbody"))
+const Comingbody = lazy(() => import("./PopularBody"))
 
 const usestyle = createStyles(() => ({
   arrow: {
@@ -37,7 +37,7 @@ const usestyle = createStyles(() => ({
   },
 }));
 
-const UpComing = () => {
+const Popular = () => {
   const { data, isError, isLoading } = usePopular();
   const { classes } = usestyle();
 
@@ -73,7 +73,7 @@ const UpComing = () => {
   });
 
   if (isLoading) {
-    return <Box sx={{color : "white"}}>isLoading...</Box>;
+    return  
   }
 
   if (isError) {
@@ -83,11 +83,11 @@ const UpComing = () => {
     <Box my={25} component="section">
       <Container size={"86.5rem"}>
         <Box component="h2" mb={20} sx={{ color: "white" }}>
-          Popular
+          Popular Movie
         </Box>
         <Box
           sx={{ position: "relative" }}
-          h={290}
+          h={240}
           className="navigation-wrapper"
         >
           <Box
@@ -106,7 +106,12 @@ const UpComing = () => {
                       <Skeleton
                         height={250}
                         width={"100%"}
-                        sx={{ backgroundColor: "#373a40" }}
+                        sx={{
+                          "&::after": {
+                            backgroundColor: "#000000db",
+                          },
+
+                        }}
                       />
                     </>
                   }
@@ -123,7 +128,7 @@ const UpComing = () => {
                   position: "absolute",
                   top: 0,
                   right: 0,
-                  height: "100%",
+                  height: 260 ,
                   width: 20,
                 }}
                 component="span"
@@ -158,4 +163,4 @@ const UpComing = () => {
   );
 };
 
-export default UpComing;
+export default Popular;

@@ -7,6 +7,7 @@ const useStyle = createStyles(() => ({
   container: {
     position: "relative",
     transition: "0.5s  all",
+    height : 260,
     "&:hover .poBtn": {
       opacity: 1,
     },
@@ -28,17 +29,15 @@ const useStyle = createStyles(() => ({
   },
   btnContainer: {
     position: "absolute",
-    top: "50%",
-    transform: "translate(50%,-55%)",
-    right: "50%",
+    top: 0,
     backgroundColor: "#00000069",
     width: "100%",
-    height: "110%",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
+    height: 260,
     opacity : 0,
-    overflow : "hidden"
+    overflow : "hidden",
+    display : "flex",
+    alignItems : "center",
+    justifyContent : "center"
   },
 }));
 
@@ -58,7 +57,7 @@ const Comingbody = ({ item }: { item: heroSection }) => {
       </Box>
       <Box component="span">
         <RingProgress
-          sx={{ top: "-65px", backgroundColor: "black", borderRadius: "50%" }}
+          sx={{ top: "-71px", backgroundColor: "black", borderRadius: "50%" }}
           thickness={3}
           size={60}
           label={
