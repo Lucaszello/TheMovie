@@ -33,6 +33,8 @@ const useStyle = createStyles(() => ({
 }));
 
 const UpComingBody = ({item} : {item : upComingProp}) => {
+  console.log(item.poster_path);
+  
     const {classes} = useStyle()
   return (
     <Link to={`/movie/${item.id}`}>

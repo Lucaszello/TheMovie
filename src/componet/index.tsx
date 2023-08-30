@@ -1,4 +1,3 @@
-import { Box } from "@mantine/core";
 import HeroSection from "./Home/HeroSection";
 import Popular from "./Popular/Popular";
 import UpComing from "./UpComing/UpComing";

@@ -20,7 +20,7 @@ const useStyle = createStyles((theme) => ({
     borderRadius: 10,
     [theme.fn.smallerThan("md")]: {
       backgroundSize: "contain",
-      width: "100%",
+      width: 200,
       height: "100%",
     },
   },

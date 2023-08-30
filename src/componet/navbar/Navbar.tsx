@@ -1,10 +1,22 @@
-import { Box, Container, Input } from "@mantine/core";
+import { Box, Container, Input, createStyles } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import {IoSearch} from "react-icons/io5"
+import { Link } from "react-router-dom";
+
+const useStyle = createStyles(() => ({
+  Logo: {
+    color: "#ff00008a",
+    fontFamily: "Black Ops One, cursive",
+    fontSize: 30,
+    textDecoration : "none"
+  },
+}));
+
 const Navbar = () => {
+  const {classes} = useStyle()
     const matches = useMediaQuery("(max-width: 550px)");
   return (
-    <Container py={10} size={"86.5rem"}>
+    <Container sx={{display : matches ? "none" : ""}} py ={15} size={"86.5rem"}>
       <Box
         sx={{
           display: "flex",
@@ -12,15 +24,12 @@ const Navbar = () => {
           justifyContent: "space-between",
         }}
       >
-        <Box
-          sx={{
-            color: "#ff00008a",
-            fontFamily: "Black Ops One, cursive",
-            fontSize: matches ? 20 : 30,
-          }}
+        <Link
+         to={`/`}
+         className={classes.Logo}
         >
           WATCHLIX
-        </Box>
+        </Link>
         <Box>
           <Input
             sx={{

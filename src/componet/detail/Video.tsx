@@ -42,8 +42,8 @@ const Video = ({ id  , setOpen }: prop) => {
     >
       <ReactPlayer
       playing
-      width={1000}
-      height={700}
+      width={900}
+      height={500}
         url={`https://youtube.com/watch?v=${vd.key}`}
         fallback={<Box sx={{ color: "white" }}>is Loading...</Box>}
       />
