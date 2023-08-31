@@ -113,3 +113,10 @@ export const useUpcoming = () => {
   })
 }
 
+
+//credits
+const credits  = async (id : number) => {
+  const data = await axios.get(
+    `https://api.themoviedb.org/3/movie/${id}/credits`
+  );
+}

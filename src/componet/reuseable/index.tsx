@@ -43,7 +43,6 @@ const Reuse = ({children} : any) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [loaded, setLoaded] = useState(false);
 
-  const test = currentSlide === 0;
 
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
     initial: 0,
@@ -85,24 +84,7 @@ const Reuse = ({children} : any) => {
         ref={sliderRef}
         className="keen-slider"
       >
-        {
-            children
-        }
-       
-        {test && (
-          <Box
-            sx={{
-              backgroundColor: "#000000b3",
-              color: "white",
-              position: "absolute",
-              top: 0,
-              right: 0,
-              height: 260,
-              width: 20,
-            }}
-            component="span"
-          ></Box>
-        )}
+        {children}
       </Box>
       {loaded && instanceRef.current && (
         <>

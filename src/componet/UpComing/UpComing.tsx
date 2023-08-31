@@ -35,7 +35,7 @@ const UpComing = () => {
       {matches ? (
         <Grid columns={5}>
           {data.map((item: upComingProp) => (
-            <Grid.Col lg={1}>
+            <Grid.Col key={item.id} lg={1}>
               <Suspense
                 fallback={
                   <>

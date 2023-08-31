@@ -30,6 +30,23 @@ body {
 .mantine-10m2vh4::before{
   background-color: #000000db;
 }
+.mantine-Paper-root {
+  background-color: #0000001c;
+  backdrop-filter: blur(15px);
+}
+.mantine-Drawer-header{
+  background-color: #0000001c;
+  backdrop-filter: blur(15px);
+}
+.mantine-Drawer-body{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height:  60%;
+}
+
+
+
 
 
 
