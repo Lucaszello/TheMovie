@@ -24,7 +24,7 @@ const UpComing = () => {
   
 
   if (isLoading) {
-    return <h1>is Loading</h1>;
+    return 
   }
 
   return (

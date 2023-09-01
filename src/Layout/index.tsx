@@ -1,6 +1,7 @@
 import { MantineProvider } from "@mantine/core";
 import { Outlet } from "react-router-dom";
 import Navbar from "../componet/navbar/Navbar";
+import Footer from "../Footer/Footer";
 
 
 
@@ -21,6 +22,7 @@ const Main = ( ) =>  {
     >
       <Navbar/>
       <Outlet/>
+      <Footer/>
     </MantineProvider>
   );
 };

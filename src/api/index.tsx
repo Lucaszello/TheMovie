@@ -43,8 +43,8 @@ export const useTopRate = (id: number) => {
   });
 };
 
-//upcoming
-const popularOption = {
+//Option2
+const Option2 = {
   method: "GET",
   params: { language: "en-US", page: "1" },
   headers: {
@@ -57,7 +57,7 @@ const popularOption = {
 const FetchPopular = async () => {
   const data = await axios.get(
     `https://api.themoviedb.org/3/movie/popular`,
-    popularOption
+    Option2
   );
   return data.data.results;
 };
@@ -78,7 +78,7 @@ export const usePopular = () => {
 
 export const useDetail = (id  : number ) => {
   return useQuery({
-    queryKey : ["detail"],
+    queryKey : ["detail", { id }],
     queryFn : () => detail(id)
   })
 }
@@ -102,7 +102,7 @@ export const useVideo = (id : number)  => {
 
 //upComing 
 const upComing = async()  => {
-  const data = await axios.get("https://api.themoviedb.org/3/movie/upcoming"  , popularOption)
+  const data = await axios.get("https://api.themoviedb.org/3/movie/upcoming"  , Option2)
   return data.data.results
 }
 
@@ -117,6 +117,33 @@ export const useUpcoming = () => {
 //credits
 const credits  = async (id : number) => {
   const data = await axios.get(
-    `https://api.themoviedb.org/3/movie/${id}/credits`
+    `https://api.themoviedb.org/3/movie/${id}/credits`,
+    Option2
   );
+  return data.data
 }
+
+export const useCredits = (id : number) => {
+  return useQuery({
+    queryKey : ["credits",{id}],
+    queryFn : () => credits(id)
+  })
+}
+
+
+//Recommendation
+const Recommend = async (id: number) => {
+  const data = await axios.get(
+    `https://api.themoviedb.org/3/movie/${id}/recommendations`,
+    options
+  );
+  return data.data.results;
+};
+
+//HeroSection recommend
+export const useRecommend = (id: number) => {
+  return useQuery({
+    queryKey: ["recommend",id],
+    queryFn: () => Recommend(id),
+  });
+};

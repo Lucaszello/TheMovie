@@ -82,3 +82,26 @@ export interface detailProp {
   vote_average: number;
   vote_count: number;
 }
+
+
+//cast
+export interface CastProp {
+  cast_id: 1;
+  character: string;
+  credit_id: string;
+  gender: number;
+  id: number;
+  known_for_department: string;
+  name: string;
+  order: number;
+  original_name: string;
+  popularity: number;
+  profile_path: string;
+}
+
+//type 
+export interface RecommendProp {
+  backdrop_path: string;
+  id: number;
+  title:string;
+}

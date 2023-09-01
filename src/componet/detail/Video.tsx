@@ -10,10 +10,9 @@ interface prop {
 
 const Video = ({ id  , setOpen }: prop) => {
   const { data, isLoading } = useVideo(id);
-  console.log(data);
 
   if (isLoading) {
-    return <h1>Loading...</h1>;
+    return ;
   }
 
   const vd = data[data?.length - 1];

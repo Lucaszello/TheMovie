@@ -12,6 +12,8 @@ import { FaPlay } from "react-icons/fa";
 import Video from "./Video";
 import { useState } from "react";
 import { useMediaQuery } from "@mantine/hooks";
+import Credits from "./Credits";
+import Recommend from "../recommend/Recommend";
 const useStyle = createStyles((theme) => ({
   posterImg: {
     width: 280,
@@ -210,6 +212,12 @@ const DetailBody = ({ item }: { item: detailProp }) => {
         </Container>
       </Box>
       {open && <Video id={item.id} setOpen={setOpen} />}
+
+      {/* //Credits  */}
+      <Credits id={item.id} />
+
+      {/* Recommend */}
+      <Recommend id={item.id} />
     </>
   );
 };
