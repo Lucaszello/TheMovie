@@ -78,7 +78,10 @@ const DetailBody = ({ item }: { item: detailProp }) => {
             </Grid.Col>
             <Grid.Col lg={9}>
               <Box
-                sx={{ textAlign: matches ? "center" : "start" , marginBottom : matches ? 10 : 0}}
+                sx={{
+                  textAlign: matches ? "center" : "start",
+                  marginBottom: matches ? 10 : 0,
+                }}
                 component="h1"
               >
                 {item.title}

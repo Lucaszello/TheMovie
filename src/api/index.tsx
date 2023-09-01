@@ -143,7 +143,7 @@ const Recommend = async (id: number) => {
 //HeroSection recommend
 export const useRecommend = (id: number) => {
   return useQuery({
-    queryKey: ["recommend",id],
+    queryKey: ["recommend",{id}],
     queryFn: () => Recommend(id),
   });
 };

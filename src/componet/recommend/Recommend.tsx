@@ -1,16 +1,15 @@
 import { Box, Container } from "@mantine/core";
 import { useRecommend } from "../../api";
 import { RecommendProp } from "../../type/type";
-import RecommendBody from "./RecommendBody";
 import Reuse from "../reuseable";
-
+import { lazy, Suspense } from "react";
+const RecommendBody = lazy(() => import("./RecommendBody"));
 const Recommend = ({ id }: { id: number }) => {
   const { data, isLoading } = useRecommend(id);
-
   // const filter = data ;
 
   if (isLoading) {
-    return;
+    return <h1>is Loadding</h1>;
   }
   return (
     <Container size={"86.5rem"}>
@@ -28,22 +27,29 @@ const Recommend = ({ id }: { id: number }) => {
         </Box>
 
         {data.length ? (
-          <Reuse>
+          <Reuse key={data[0].id}>
             {data?.map((item: RecommendProp) => (
-              <>
+              <Box key={item.id}>
                 {item.backdrop_path && (
                   <div
                     key={item.id}
                     className="keen-slider__slide number-slide1"
                   >
-                    <RecommendBody item={item} />
+                    <Suspense fallback={<h1>is Loading...</h1>}>
+                      <RecommendBody item={item} />
+                    </Suspense>
                   </div>
                 )}
-              </>
+              </Box>
             ))}
           </Reuse>
         ) : (
-          <Box component="p" sx={{ color: "white" , textDecorationLine : "line-through" }}>Not recommended yet</Box>
+          <Box
+            component="p"
+            sx={{ color: "white", textDecorationLine: "line-through" }}
+          >
+            Not recommended yet
+          </Box>
         )}
       </Box>
     </Container>

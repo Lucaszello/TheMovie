@@ -9,7 +9,7 @@ const CredistBody = lazy(() => import("./CredistBody"));
 const Credits = ({ id }: { id: number }) => {
   const { data, isLoading } = useCredits(id);
   if (isLoading) {
-    return  ;
+    return null;
   }
   return (
     <Container size={"86.5rem"} mt={20}>
@@ -26,9 +26,9 @@ const Credits = ({ id }: { id: number }) => {
         Top Billed Cast
       </Box>
       {/* //reuse kenn slider */}
-      <Reuse>
+      <Reuse key={data.cast[0].id}>
         {data?.cast?.map((item: CastProp) => (
-          <>
+          <Box key={item.id}>
             {item.profile_path && (
               <Box key={item.id} className="keen-slider__slide number-slide1">
                 <Suspense
@@ -49,12 +49,12 @@ const Credits = ({ id }: { id: number }) => {
                 </Suspense>
               </Box>
             )}
-          </>
+          </Box>
         ))}
       </Reuse>
       {/* // more people  */}
       <Box
-      my={20}
+        my={20}
         component="p"
         sx={{
           color: "white",

@@ -1,7 +1,6 @@
 import { Box, Drawer, createStyles } from "@mantine/core";
 import { Link, useLocation } from "react-router-dom";
 import { Nav } from "../../api/nav";
-import { motion } from "framer-motion";
 const useStyle = createStyles(() => ({
   navli: {
     listStyle: "none",

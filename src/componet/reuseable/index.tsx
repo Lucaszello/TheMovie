@@ -1,9 +1,8 @@
 import { Box, createStyles } from "@mantine/core";
-import {  useState } from "react";
+import { useState } from "react";
 import { FaChevronCircleRight, FaChevronCircleLeft } from "react-icons/fa";
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
-
 
 const usestyle = createStyles(() => ({
   arrow: {
@@ -35,14 +34,11 @@ const usestyle = createStyles(() => ({
   },
 }));
 
-
-
-const Reuse = ({children} : any) => {
-    const {classes} = usestyle()
+const Reuse = ({ children }: any) => {
+  const { classes } = usestyle();
   //keen
   const [currentSlide, setCurrentSlide] = useState(0);
   const [loaded, setLoaded] = useState(false);
-
 
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
     initial: 0,
@@ -50,7 +46,7 @@ const Reuse = ({children} : any) => {
       setCurrentSlide(slider.track.details.rel);
     },
     created() {
-      setLoaded(true);
+      setLoaded(true);  
     },
     breakpoints: {
       "(max-width : 450px)": {
@@ -110,6 +106,6 @@ const Reuse = ({children} : any) => {
       )}
     </Box>
   );
-}
+};
 
-export default Reuse
+export default Reuse;
