@@ -1,12 +1,13 @@
-import { Box, Container, Input, createStyles } from "@mantine/core";
+import { Box, Container, createStyles } from "@mantine/core";
 import { useDisclosure, useMediaQuery } from "@mantine/hooks";
-import { IoSearch } from "react-icons/io5";
 import { Link, useLocation } from "react-router-dom";
 import { Nav } from "../../api/nav";
 import { motion } from "framer-motion";
 import MobileNav from "./MobileNav";
 import { Burger } from "@mantine/core";
-
+import {useState} from "react"
+import { useSearch } from "../../api";
+import SearchBox from "./SearchBox";
 const useStyle = createStyles((theme) => ({
   Logo: {
     color: "#ff00008a",
@@ -49,6 +50,13 @@ const Navbar = () => {
     const [opened, { toggle }] = useDisclosure(false);
     const label = opened ? "Close navigation" : "Open navigation";
 
+  
+
+    //placeholder
+    const placeholder   = pathname === "/" ? "movie" : pathname.split("/")[1] ;
+    
+   
+
   return (
     <Container py={15} size={"86.5rem"}>
       <Box
@@ -89,19 +97,8 @@ const Navbar = () => {
               );
             })}
           </Box>
-          <Input
-            sx={{
-              marginLeft: 8,
-              "& > input": {
-                backgroundColor: "#25262b",
-                color: "#f5f5f5 ",
-                borderColor: "#373a40",
-              },
-            }}
-            rightSection={
-              <IoSearch style={{ color: "#f5f5f5", fontSize: 20 }} />
-            }
-          />
+          {/* // search */}
+        <SearchBox placeholder={placeholder} />
           {matches && (
             <Burger
               ml={10}

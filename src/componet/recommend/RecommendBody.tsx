@@ -4,6 +4,7 @@ import { AiFillPlayCircle } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
 const RecommendBody = (item: { item: RecommendProp }) => {
+  
   return (
     <Link style={{textDecoration : "none"}} to={`/movie/${item.item.id}`}>
       <Box sx={{position : "relative" ,cursor : "pointer", '&:hover .span' : {opacity : 1} }} component="div">

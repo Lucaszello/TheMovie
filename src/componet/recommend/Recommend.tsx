@@ -10,6 +10,7 @@ const Recommend = ({ id }: { id: number }) => {
 
   if (isLoading) {
     return <h1>is Loadding</h1>;
+    
   }
   return (
     <Container size={"86.5rem"}>

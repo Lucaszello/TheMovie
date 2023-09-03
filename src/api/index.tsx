@@ -69,67 +69,68 @@ export const usePopular = () => {
   });
 };
 
- const detail = async (id : number) => {
+const detail = async (id: number) => {
   const data = await axios.get(
-    `https://api.themoviedb.org/3/movie/${id}  `,options
+    `https://api.themoviedb.org/3/movie/${id}  `,
+    options
   );
-  return data.data
+  return data.data;
 };
 
-export const useDetail = (id  : number ) => {
+export const useDetail = (id: number) => {
   return useQuery({
-    queryKey : ["detail", { id }],
-    queryFn : () => detail(id)
-  })
-}
-
+    queryKey: ["detail", { id }],
+    queryFn: () => detail(id),
+  });
+};
 
 //movie
-const video = async(id : number) => {
+const video = async (id: number) => {
   const data = await axios.get(
-    `https://api.themoviedb.org/3/movie/${id}/videos `,options
+    `https://api.themoviedb.org/3/movie/${id}/videos `,
+    options
   );
-  return data.data.results
-}
+  return data.data.results;
+};
 
-export const useVideo = (id : number)  => {
+export const useVideo = (id: number) => {
   return useQuery({
-    queryKey : ["video"],
-    queryFn : () => video(id)
-  })
-}
+    queryKey: ["video"],
+    queryFn: () => video(id),
+  });
+};
 
-
-//upComing 
-const upComing = async()  => {
-  const data = await axios.get("https://api.themoviedb.org/3/movie/upcoming"  , Option2)
-  return data.data.results
-}
+//upComing
+const upComing = async () => {
+  const data = await axios.get(
+    "https://api.themoviedb.org/3/movie/upcoming",
+    Option2
+  );
+  return data.data.results;
+};
 
 export const useUpcoming = () => {
   return useQuery({
-    queryKey : ["upcoming"],
-    queryFn  : upComing
-  })
-}
-
+    queryKey: ["upcoming"],
+    queryFn: upComing,
+  });
+};
 
 //credits
-const credits  = async (id : number) => {
+const credits = async (id: number) => {
   const data = await axios.get(
     `https://api.themoviedb.org/3/movie/${id}/credits`,
     Option2
   );
-  return data.data
-}
+  return data.data;
+};
 
-export const useCredits = (id : number) => {
+export const useCredits = (id: number) => {
   return useQuery({
-    queryKey : ["credits",{id}],
-    queryFn : () => credits(id)
-  })
-}
-
+    queryKey: ["credits", { id }],
+    queryFn: () => credits(id),
+  });
+};
 
 //Recommendation
 const Recommend = async (id: number) => {
@@ -143,7 +144,26 @@ const Recommend = async (id: number) => {
 //HeroSection recommend
 export const useRecommend = (id: number) => {
   return useQuery({
-    queryKey: ["recommend",{id}],
+    queryKey: ["recommend", { id }],
     queryFn: () => Recommend(id),
+  });
+};
+
+//search people & tv & movie
+export const Search = async (
+  path: string,
+  query: string
+) => {
+  const data = await axios.get(
+    `https://api.themoviedb.org/3/search/${path}?query=${query}`,
+    Option2
+  );
+  return data.data;
+};
+
+export const useSearch = (path: string, query: string) => {
+  return useQuery({
+    queryKey: ["search"],
+    queryFn: () => Search(path, query),
   });
 };
