@@ -152,18 +152,32 @@ export const useRecommend = (id: number) => {
 //search people & tv & movie
 export const Search = async (
   path: string,
-  query: string
+  query: string | undefined
 ) => {
   const data = await axios.get(
     `https://api.themoviedb.org/3/search/${path}?query=${query}`,
     Option2
   );
-  return data.data;
+  return data.data.results;
 };
 
-export const useSearch = (path: string, query: string) => {
+export const useSearch = (path: string, query: string | undefined) => {
   return useQuery({
-    queryKey: ["search"],
+    queryKey: ["search",query],
     queryFn: () => Search(path, query),
   });
 };
+
+
+//people
+const People = async () => {
+  const data = await axios.get('https://api.themoviedb.org/3/person/popular',Option2);
+  return data.data.results
+}
+
+export const usePeople = ()  => {
+  return useQuery({
+    queryKey : ['people'],
+    queryFn : People
+  })
+}

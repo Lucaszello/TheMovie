@@ -11,8 +11,6 @@ interface prop {
 const Video = ({ id, setOpen }: prop) => {
   const { data, isLoading } = useVideo(id);
 
-  console.log({ data, isLoading });
-
   if (isLoading) {
     return (
       <Box
@@ -66,7 +64,7 @@ const Video = ({ id, setOpen }: prop) => {
                 transfrom: "translateX(-50%)",
               }}
             >
-              is loading...
+             <Loader color="red" />
             </Box>
           }
           <ReactPlayer

@@ -34,7 +34,7 @@ const MobileNav = ({
           {Nav.map((item) => {
             const isActive = item.path === pathname;
             return (
-              <li className={classes.navli}>
+              <li key={item.path} className={classes.navli}>
                 <Link
                   to={item.path}
                   className={cx(classes.navLink , {[classes.under] : isActive })  }

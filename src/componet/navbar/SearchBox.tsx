@@ -2,7 +2,6 @@ import { Box, Input } from "@mantine/core";
 import { useNavigate } from "react-router-dom";
 import { IoSearch } from "react-icons/io5";
 import {useState , FormEvent} from "react"
-import { useSearch } from "../../api";
 const SearchBox = ({placeholder } : {placeholder : string}) => {
   //navigate
   const navigate = useNavigate();
@@ -12,14 +11,10 @@ const SearchBox = ({placeholder } : {placeholder : string}) => {
 
     const handleSubmit = (e : FormEvent<HTMLFormElement> ) => {
             e.preventDefault();
-            console.log(value);
-            //search api
-            navigate("/search")
+            navigate(`/movie/search/${value}`)
+            setValue('')
         }
         
-        const { data } = useSearch(placeholder, value);
-            console.log(data);
-    
     
   return (
     <form onSubmit={handleSubmit} action="">

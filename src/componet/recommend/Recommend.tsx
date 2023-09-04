@@ -10,8 +10,11 @@ const Recommend = ({ id }: { id: number }) => {
 
   if (isLoading) {
     return <h1>is Loadding</h1>;
-    
   }
+
+  const fix = data.find((item : RecommendProp) => item.backdrop_path !== null);
+  console.log(fix);
+  
   return (
     <Container size={"86.5rem"}>
       <Box component="div">
@@ -27,7 +30,7 @@ const Recommend = ({ id }: { id: number }) => {
           Recommendations
         </Box>
 
-        {data.length ? (
+        {data.length && fix ? (
           <Reuse key={data[0].id}>
             {data?.map((item: RecommendProp) => (
               <Box key={item.id}>

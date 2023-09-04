@@ -4,9 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Nav } from "../../api/nav";
 import { motion } from "framer-motion";
 import MobileNav from "./MobileNav";
-import { Burger } from "@mantine/core";
-import {useState} from "react"
-import { useSearch } from "../../api";
+import { Burger } from "@mantine/core";;
 import SearchBox from "./SearchBox";
 const useStyle = createStyles((theme) => ({
   Logo: {

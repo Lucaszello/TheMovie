@@ -105,3 +105,11 @@ export interface RecommendProp {
   id: number;
   title:string;
 }
+
+
+//people
+export interface PeopleProp {
+  id: number;
+  profile_path : string,
+  name : string
+}
