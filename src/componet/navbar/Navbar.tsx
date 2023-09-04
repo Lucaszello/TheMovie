@@ -53,6 +53,7 @@ const Navbar = () => {
     //placeholder
     const placeholder   = pathname === "/" ? "movie" : pathname.split("/")[1] ;
     
+    
    
 
   return (

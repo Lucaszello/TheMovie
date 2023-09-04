@@ -2,12 +2,13 @@ import { Box, Container, Grid } from "@mantine/core";
 import { usePeople } from "../../api";
 import PeopleBody from "./PeopleBody";
 import { PeopleProp } from "../../type/type";
+import HeroLoader from "../../Loader/heroLoader";
 
 const People = () => {
   const { data, isLoading } = usePeople();
 
   if (isLoading) {
-    return <Box sx={{ color: "white" }}>is Loading...</Box>;
+    return <HeroLoader/>;
   }
 
 

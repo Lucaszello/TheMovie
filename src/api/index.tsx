@@ -181,3 +181,37 @@ export const usePeople = ()  => {
     queryFn : People
   })
 }
+
+
+//tvshow
+const Tv = async (str : string) => {
+  const { data } = await axios.get(
+    `https://api.themoviedb.org/3/trending/tv/day`,
+    Option2
+  );
+  return data.results
+}
+
+export const useTv = (str : string) => {
+  return useQuery({
+    queryKey : ["Tv"],
+    queryFn : () =>  Tv(str)
+  })
+}
+
+
+//tv Airing today
+export const Air = async () => {
+  const { data } = await axios.get(
+    "https://api.themoviedb.org/3/tv/airing_today",Option2
+  );
+  return data.results
+}
+
+export const useAir = () => {
+  return useQuery({
+    queryKey : ['air'],
+    queryFn : Air
+  })
+
+}

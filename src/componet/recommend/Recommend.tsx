@@ -1,4 +1,4 @@
-import { Box, Container } from "@mantine/core";
+import { Box, Container, Skeleton } from "@mantine/core";
 import { useRecommend } from "../../api";
 import { RecommendProp } from "../../type/type";
 import Reuse from "../reuseable";
@@ -9,7 +9,7 @@ const Recommend = ({ id }: { id: number }) => {
   // const filter = data ;
 
   if (isLoading) {
-    return <h1>is Loadding</h1>;
+    return null;
   }
 
   const fix = data.find((item : RecommendProp) => item.backdrop_path !== null);
@@ -39,7 +39,21 @@ const Recommend = ({ id }: { id: number }) => {
                     key={item.id}
                     className="keen-slider__slide number-slide1"
                   >
-                    <Suspense fallback={<h1>is Loading...</h1>}>
+                    <Suspense
+                      fallback={
+                        <>
+                          <Skeleton
+                            height={150}
+                            width={"100%"}
+                            sx={{
+                              "&::after": {
+                                backgroundColor: "#000000db",
+                              },
+                            }}
+                          />
+                        </>
+                      }
+                    >
                       <RecommendBody item={item} />
                     </Suspense>
                   </div>

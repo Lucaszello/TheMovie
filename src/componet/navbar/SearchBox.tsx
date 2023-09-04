@@ -11,7 +11,7 @@ const SearchBox = ({placeholder } : {placeholder : string}) => {
 
     const handleSubmit = (e : FormEvent<HTMLFormElement> ) => {
             e.preventDefault();
-            navigate(`/movie/search/${value}`)
+            navigate(`/${placeholder}/search/${value}`)
             setValue('')
         }
         

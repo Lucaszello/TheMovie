@@ -4,12 +4,14 @@ import { CastProp } from "../../type/type";
 import Reuse from "../reuseable";
 import { BsArrowRight } from "react-icons/bs";
 import { lazy, Suspense } from "react";
+import HeroLoader from "../../Loader/heroLoader";
+import { Link } from "react-router-dom";
 const CredistBody = lazy(() => import("./CredistBody"));
 
 const Credits = ({ id }: { id: number }) => {
   const { data, isLoading } = useCredits(id);
   if (isLoading) {
-    return null;
+    return <HeroLoader/>;
   }
   return (
     <Container size={"86.5rem"} mt={20}>
@@ -53,35 +55,37 @@ const Credits = ({ id }: { id: number }) => {
         ))}
       </Reuse>
       {/* // more people  */}
-      <Box
-        my={20}
-        component="p"
-        sx={{
-          color: "white",
-          fontSize: 20,
-          display: "flex",
-          alignItems: "center",
-          fontWeight: 500,
-          cursor: "pointer",
-          "&:hover": {
-            opacity: 0.8,
-          },
-        }}
-      >
-        More Popular{" "}
+      <Link style={{textDecoration : "none"}} to={`/people`} >
         <Box
-          component="span"
+          my={20}
+          component="p"
           sx={{
-            color: "#ff00008a",
-            marginLeft: 8,
+            color: "white",
+            fontSize: 20,
             display: "flex",
             alignItems: "center",
+            fontWeight: 500,
+            cursor: "pointer",
+            "&:hover": {
+              opacity: 0.8,
+            },
           }}
         >
-          People{" "}
-          <BsArrowRight size={25} style={{ paddingTop: 3, marginLeft: 5 }} />
-        </Box>{" "}
-      </Box>
+          More Popular{" "}
+          <Box
+            component="span"
+            sx={{
+              color: "#ff00008a",
+              marginLeft: 8,
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            People{" "}
+            <BsArrowRight size={25} style={{ paddingTop: 3, marginLeft: 5 }} />
+          </Box>{" "}
+        </Box>
+      </Link>
     </Container>
   );
 };

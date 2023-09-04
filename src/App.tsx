@@ -5,8 +5,9 @@ import Home from "./componet";
 import Detail from "./componet/detail/Detail";
 import Tv from "./page/tvShow";
 import People from "./page/people";
-import TvDetail from "./page/tvShow/TvDetail";
-import SearchMovie from "./page/search/SearchMovie";
+import SearchMovie from "./page/Movie/SearchMovie";
+import PeopleDetail from "./page/people/Detail/PeopleDetail";
+import TvSearch from "./page/tvShow/TvSearch";
 
 
 
@@ -19,9 +20,10 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/movie/:id" element={<Detail />} />
           <Route path="/tv" element={<Tv />} />
-          <Route path="/tv/:id" element={<TvDetail />} />
-          <Route path="/people" element={<People />} />
+          <Route path="/tv/search/:search" element={<TvSearch />} />
           <Route path="/movie/search/:search" element={<SearchMovie/>} />
+          <Route path="/people" element={<People />} />
+          <Route path="/people/:id" element={<PeopleDetail/>} />
         </Route>
       </Routes>
     </BrowserRouter>
