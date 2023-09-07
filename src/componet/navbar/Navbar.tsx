@@ -4,7 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Nav } from "../../api/nav";
 import { motion } from "framer-motion";
 import MobileNav from "./MobileNav";
-import { Burger } from "@mantine/core";;
+import { Burger } from "@mantine/core";
 import SearchBox from "./SearchBox";
 const useStyle = createStyles((theme) => ({
   Logo: {
@@ -43,7 +43,7 @@ const useStyle = createStyles((theme) => ({
 
 const Navbar = () => {
   const { classes } = useStyle();
-  const matches = useMediaQuery("(max-width: 620px)");
+  const matches = useMediaQuery("(max-width: 800px)");
   const { pathname } = useLocation();
     const [opened, { toggle }] = useDisclosure(false);
     const label = opened ? "Close navigation" : "Open navigation";
@@ -57,7 +57,7 @@ const Navbar = () => {
    
 
   return (
-    <Box component="div" px={90} py={15}>
+    <Box component="div" px={ matches ? 30 : 90} py={15}>
       <Box
         sx={{
           display: "flex",

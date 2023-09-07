@@ -29,7 +29,7 @@ const SearchBox = ({placeholder } : {placeholder : string}) => {
             borderColor: "#373a40",
           },
         }}
-        placeholder={`Search ${placeholder}...`}
+        placeholder={`Search ${placeholder.toUpperCase( )}...`}
         rightSection={
           <Box component="button" sx={{border : "none" , backgroundColor : "transparent" , cursor : "pointer"}}>
             <IoSearch style={{ color: "#f5f5f5", fontSize: 20 }} />

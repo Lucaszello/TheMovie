@@ -3,10 +3,13 @@ import { usePopular } from "../../api";
 import { heroSection } from "../../type/type";
 import { lazy, Suspense } from "react";
 import Reuse from "../reuseable";
+import { useMediaQuery } from "@mantine/hooks";
 const Comingbody = lazy(() => import("./PopularBody"));
 
 const Popular = () => {
   const { data, isError, isLoading } = usePopular();
+  const matches = useMediaQuery("(max-width: 800px)");
+
 
   if (isLoading) {
     return;
@@ -16,7 +19,7 @@ const Popular = () => {
     return <h1>isError...</h1>;
   }
   return (
-    <Box px={90} my={25} component="section">
+    <Box px={ matches ? 30 : 90} my={25} component="section">
       <>
         <Box component="h2" mb={20} sx={{ color: "white" }}>
           Popular Movie

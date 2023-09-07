@@ -1,15 +1,3 @@
-id: 569094;
-original_language: "en";
-overview: "After reuniting with Gwen Stacy, Brooklyn’s full-time, friendly neighborhood Spider-Man is catapulted across the Multiverse, where he encounters the Spider Society, a team of Spider-People charged with protecting the Multiverse’s very existence. But when the heroes clash on how to handle a new threat, Miles finds himself pitted against the other Spiders and must set out on his own to save those he loves most.";
-popularity: 2673.435;
-poster_path: "/8Vt6mWEReuy4Of61Lnj5Xj704m8.jpg";
-release_date: "2023-05-31";
-title: "Spider-Man: Across the Spider-Verse";
-video: false;
-vote_average: 8.5;
-vote_count: 3468;
-backdrop_path: "/4HodYYKEIsGOdinkGi2Ucz6X9i0.jpg";
-
 export interface heroSection {
   id: number;
   original_language: string;
@@ -83,7 +71,6 @@ export interface detailProp {
   vote_count: number;
 }
 
-
 //cast
 export interface CastProp {
   cast_id: 1;
@@ -99,19 +86,18 @@ export interface CastProp {
   profile_path: string;
 }
 
-//type 
+//type
 export interface RecommendProp {
   backdrop_path: string;
   id: number;
-  title:string;
+  title: string;
 }
-
 
 //people
 export interface PeopleProp {
   id: number;
-  profile_path : string,
-  name : string
+  profile_path: string;
+  name: string;
 }
 
 //tv
@@ -127,4 +113,47 @@ export interface tv {
   poster_path: string;
   vote_average: number;
   vote_count: number;
+}
+
+//tv detail
+export interface tvDetailProp extends tv {
+  homepage: string;
+  last_air_date: string;
+  last_episode_to_air: [
+    id: number,
+    name: number,
+    overview: string,
+    air_date: string,
+    episode_number: number,
+    episode_type: string,
+    season_number: number,
+    show_id: number,
+    still_path: string
+  ];
+  number_of_episodes: number;
+  number_of_seasons: number;
+  origin_country: ["string"];
+  original_language: string;
+  original_name: string;
+  overview: string;
+  popularity: number;
+  poster_path: string;
+  seasons: [
+    {
+      air_date: string;
+      episode_count: number;
+      id: number;
+      name: string;
+      overview: string;
+      poster_path: string;
+      season_number: number;
+      vote_average: number;
+    }
+  ];
+  genres: 
+    {
+      id: number;
+      name: string;
+    }[]
+    status : string
 }

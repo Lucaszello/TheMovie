@@ -9,6 +9,7 @@ const UpComingBody = lazy(() => import("./UpComingBody"));
 
 const UpComing = () => {
   const { data, isLoading } = useUpcoming();
+  const matches2 = useMediaQuery("(max-width: 800px)");
   const matches = useMediaQuery("(min-width: 60em)");
 
   if (isLoading) {
@@ -16,7 +17,7 @@ const UpComing = () => {
   }
 
   return (
-    <Box component="div" px={90} mt={10}>
+    <Box component="div" px={ matches2 ? 30 : 90} mt={10}>
       <Box py={20} component="h2" sx={{ color: "white" }}>
         Upcoming Movie
       </Box>

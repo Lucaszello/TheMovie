@@ -26,7 +26,7 @@ const useStyle = createStyles((theme) => ({
     width: "100%",
     textJustify: "auto",
     paddingBottom: rem(50),
-    [theme.fn.smallerThan("md")]: {
+    [`@media (max-width: 800px)`]: {
       padding: rem(30),
     },
   },

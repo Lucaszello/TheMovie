@@ -88,18 +88,18 @@ export const useDetail = (id: number) => {
 };
 
 //movie
-const video = async (id: number) => {
+const video = async (id: number , path : string) => {
   const data = await axios.get(
-    `https://api.themoviedb.org/3/movie/${id}/videos `,
+    `https://api.themoviedb.org/3/${path}/${id}/videos `,
     options
   );
   return data.data.results;
 };
 
-export const useVideo = (id: number) => {
+export const useVideo = (id: number,path : string) => {
   return useQuery({
     queryKey: ["video"],
-    queryFn: () => video(id),
+    queryFn: () => video(id,path),
   });
 };
 

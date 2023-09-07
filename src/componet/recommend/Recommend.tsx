@@ -3,20 +3,21 @@ import { useRecommend } from "../../api";
 import { RecommendProp } from "../../type/type";
 import Reuse from "../reuseable";
 import { lazy, Suspense } from "react";
+import { useMediaQuery } from "@mantine/hooks";
 const RecommendBody = lazy(() => import("./RecommendBody"));
 const Recommend = ({ id }: { id: number }) => {
   const { data, isLoading } = useRecommend(id);
-  // const filter = data ;
+  const matches = useMediaQuery("(max-width: 800px)");
+  
 
   if (isLoading) {
     return null;
   }
 
   const fix = data.find((item : RecommendProp) => item.backdrop_path !== null);
-  console.log(fix);
   
   return (
-    <Box component="div" px={90}>
+    <Box component="div" px={matches ? 30 : 90}>
       <Box component="div">
         <Box
           component="h2"

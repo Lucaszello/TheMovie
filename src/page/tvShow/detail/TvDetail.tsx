@@ -1,14 +1,22 @@
-import { useParams } from "react-router-dom"
+import { useParams } from "react-router-dom";
 import { useTvDetail } from "../../../api";
+import HeroLoader from "../../../Loader/heroLoader";
+import TvDetailBody from "./TvDetailBody";
 
 const TvDetail = () => {
-  const {id} = useParams();
-  const {data} = useTvDetail(Number(id))
-  console.log(data);
-  
-  return (
-    <div>TvDetail</div>
-  )
-}
+  const { id } = useParams();
+  const { data, isLoading } = useTvDetail(Number(id));
 
-export default TvDetail
+  if (isLoading) {
+    return <HeroLoader />;
+  }
+  
+
+  return (
+    <div>
+        <TvDetailBody item={data} />
+    </div>
+  );
+};
+
+export default TvDetail;

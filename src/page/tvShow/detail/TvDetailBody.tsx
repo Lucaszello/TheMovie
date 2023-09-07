@@ -1,18 +1,11 @@
-import {
-  Box,
-  Flex,
-  Grid,
-  Rating,
-  Text,
-  createStyles,
-} from "@mantine/core";
-import { detailProp } from "../../type/type";
-import { FaPlay } from "react-icons/fa";
-import Video from "./Video";
-import { useState } from "react";
+import { Box, Flex, Grid, Text, createStyles } from "@mantine/core";
+import { tvDetailProp } from "../../../type/type";
 import { useMediaQuery } from "@mantine/hooks";
-import Credits from "./Credits";
-import Recommend from "../recommend/Recommend";
+import { FaPlay } from "react-icons/fa";
+import { useState , lazy , Suspense } from "react";
+import HeroLoader from "../../../Loader/heroLoader";
+const Video = lazy(() => import("../../../componet/detail/Video"))
+
 const useStyle = createStyles((theme) => ({
   posterImg: {
     width: 280,
@@ -40,13 +33,14 @@ const useStyle = createStyles((theme) => ({
   },
 }));
 
-const DetailBody = ({ item }: { item: detailProp }) => {
-  const matches = useMediaQuery("(max-width: 720px)");
-  const matches2 = useMediaQuery("(max-width: 56.25em)");
+const TvDetailBody = ({ item }: { item: tvDetailProp }) => {
   const { classes } = useStyle();
+  const matches = useMediaQuery("(max-width: 56.25em)");
+
   const [open, setOpen] = useState(false);
+
   return (
-    <>
+    <div>
       <Box
         sx={{
           backgroundImage: `url(https://image.tmdb.org/t/p/original/${item?.backdrop_path})`,
@@ -67,7 +61,7 @@ const DetailBody = ({ item }: { item: detailProp }) => {
           },
         }}
       >
-        <Box px={ matches2 ? 30 : 90}>
+        <Box px={90}>
           <Grid align="center" pt={30} pb={15} columns={12}>
             <Grid.Col lg={3}>
               <img
@@ -84,8 +78,9 @@ const DetailBody = ({ item }: { item: detailProp }) => {
                 }}
                 component="h1"
               >
-                {item.title}
+                {item.name}
               </Box>
+
               <Flex>
                 <Box
                   component="p"
@@ -141,28 +136,43 @@ const DetailBody = ({ item }: { item: detailProp }) => {
                 </Box>
               </Text>
 
+              {/* total season */}
               <Text color="white" fw={600} mt={4}>
-                Budget :
+                Total Seasons :
                 <Box
                   component="span"
                   ml={10}
                   sx={{ color: "#efececd6", fontWeight: 400 }}
                 >
-                  {item.budget}
+                  {item.number_of_seasons}
                 </Box>
               </Text>
 
+              {/* episodes */}
               <Text color="white" fw={600} mt={4}>
-                Release-date :
+                Total Episodes :
                 <Box
                   component="span"
                   ml={10}
                   sx={{ color: "#efececd6", fontWeight: 400 }}
                 >
-                  {item.release_date}
+                  {item.number_of_episodes}
                 </Box>
               </Text>
 
+              {/* original language */}
+              <Text color="white" fw={600} mt={4}>
+                Original Language :
+                <Box
+                  component="span"
+                  ml={10}
+                  sx={{ color: "#efececd6", fontWeight: 400 }}
+                >
+                  &#884;{item.original_language}&#900;
+                </Box>
+              </Text>
+
+              {/* status */}
               <Text color="white" fw={600} mt={4}>
                 Status :
                 <Box
@@ -174,55 +184,50 @@ const DetailBody = ({ item }: { item: detailProp }) => {
                 </Box>
               </Text>
 
-              {/* rating */}
-              <Box sx={{ display: "flex", alignItems: "center" }} mt={4}>
-                <Box component="p" mr={5} fz={18}>
-                  Rating :
+              {/* Link home Link */}
+              <Text color="white" fw={600} mt={4}>
+                Original Link :
+                <Box
+                  component="a"
+                  target="_blink"
+                  href={item.homepage}
+                  ml={10}
+                  sx={{
+                    color: "red",
+                    fontWeight: 400,
+                    cursor: "pointer",
+                    opacity: 0.95,
+                    textDecoration: "none",
+                  }}
+                >
+                  click here
                 </Box>
-                <Rating defaultValue={2} />
-              </Box>
+              </Text>
 
-              {/* Watch Movie */}
-              <Box onClick={() => setOpen(true)} className={classes.LinkBtn}>
-                <Box sx={{ display: "flex", alignItems: "center" }}>
+              {/* watch  */}
+              <Box className={classes.LinkBtn}>
+                <Box
+                  onClick={() => setOpen(true)}
+                  sx={{ display: "flex", alignItems: "center" }}
+                >
                   Watch Now{" "}
                   <Box sx={{ fontSize: 14, paddingLeft: 5, paddingTop: 6 }}>
                     <FaPlay />
                   </Box>
                 </Box>
               </Box>
-
-              {/* /company name/ */}
-              {/* <Box mt={8} component="div">
-              <h3>Company Name</h3>
-              <Grid pt={10} columns={4}>
-                {item.production_companies.map((item) => item.logo_path !== null ?  
-                  <Grid.Col sx={{ color: "#efececd6" }} span={1}>
-                    <img
-                      className={classes.logoPath}
-                      src={`https://image.tmdb.org/t/p/original/${item?.logo_path}`}
-                      alt=""
-                    />
-                    <p>{item.name}</p>
-                  </Grid.Col>
-                  : 
-                  <></>
-                )}
-              </Grid>
-            </Box> */}
             </Grid.Col>
           </Grid>
         </Box>
       </Box>
-      {open && <Video id={item.id} setOpen={setOpen} />}
 
-      {/* //Credits  */}
-      <Credits id={item.id} />
-
-      {/* Recommend */}
-      <Recommend id={item.id} />
-    </>
+      {open && (
+        <Suspense fallback={<HeroLoader/>}>
+          <Video id={item.id} setOpen={setOpen} />
+        </Suspense>
+      )}
+    </div>
   );
 };
 
-export default DetailBody;
+export default TvDetailBody;

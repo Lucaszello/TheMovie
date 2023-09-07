@@ -2,6 +2,7 @@ import { Box, Loader } from "@mantine/core";
 import { useVideo } from "../../api";
 import ReactPlayer from "react-player";
 import { Dispatch, SetStateAction } from "react";
+import { useLocation } from "react-router-dom";
 
 interface prop {
   id: number;
@@ -9,8 +10,10 @@ interface prop {
 }
 
 const Video = ({ id, setOpen }: prop) => {
-  const { data, isLoading } = useVideo(id);
-
+  const { pathname } = useLocation();
+  const path = pathname.split("/")[1]
+  const { data, isLoading } = useVideo(id , path );
+  
   if (isLoading) {
     return (
       <Box
@@ -30,13 +33,14 @@ const Video = ({ id, setOpen }: prop) => {
   }
 
   const vd = data[data?.length - 1];
-  console.log(vd);
+  console.log(data);
 
   return (
     <>
       {data.length && vd.key ? (
         <Box
           onClick={() => setOpen(false)}
+          
           pb={10}
           sx={{
             color: "white",
@@ -71,6 +75,7 @@ const Video = ({ id, setOpen }: prop) => {
             playing
             width={900}
             height={500}
+            controls
             style={{ zIndex: 9 }}
             url={`https://youtube.com/watch?v=${vd?.key}`}
             fallback={

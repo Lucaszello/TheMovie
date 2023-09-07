@@ -8,6 +8,8 @@ const DetailBody = lazy(() => import("./DetailBody") )
 
 const Detail = () => {
   const { id }: Readonly<Params<string>> = useParams();
+  
+  
   const { data, isLoading } = useDetail(Number(id));
     if (isLoading) {
       return <HeroLoader/>;

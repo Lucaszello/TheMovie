@@ -6,15 +6,18 @@ import { BsArrowRight } from "react-icons/bs";
 import { lazy, Suspense } from "react";
 import HeroLoader from "../../Loader/heroLoader";
 import { Link } from "react-router-dom";
+import { useMediaQuery } from "@mantine/hooks";
 const CredistBody = lazy(() => import("./CredistBody"));
 
 const Credits = ({ id }: { id: number }) => {
   const { data, isLoading } = useCredits(id);
+  const matches = useMediaQuery("(max-width: 720px)");
+
   if (isLoading) {
     return <HeroLoader/>;
   }
   return (
-    <Box component="div" px={90} mt={20}>
+    <Box component="div" px={ matches ? 30 : 90} mt={20}>
       <Box
         sx={{
           color: "white",
