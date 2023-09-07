@@ -1,6 +1,5 @@
 import {
   Box,
-  Container,
   Flex,
   Grid,
   Rating,
@@ -67,7 +66,7 @@ const DetailBody = ({ item }: { item: detailProp }) => {
           },
         }}
       >
-        <Container size={"86.5rem"}>
+        <Box px={90}>
           <Grid align="center" pt={30} pb={15} columns={12}>
             <Grid.Col lg={3}>
               <img
@@ -212,7 +211,7 @@ const DetailBody = ({ item }: { item: detailProp }) => {
             </Box> */}
             </Grid.Col>
           </Grid>
-        </Container>
+        </Box>
       </Box>
       {open && <Video id={item.id} setOpen={setOpen} />}
 

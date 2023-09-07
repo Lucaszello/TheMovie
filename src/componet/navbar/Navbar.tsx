@@ -1,4 +1,4 @@
-import { Box, Container, createStyles } from "@mantine/core";
+import { Box, createStyles } from "@mantine/core";
 import { useDisclosure, useMediaQuery } from "@mantine/hooks";
 import { Link, useLocation } from "react-router-dom";
 import { Nav } from "../../api/nav";
@@ -57,7 +57,7 @@ const Navbar = () => {
    
 
   return (
-    <Container py={15} size={"86.5rem"}>
+    <Box component="div" px={90} py={15}>
       <Box
         sx={{
           display: "flex",
@@ -123,7 +123,7 @@ const Navbar = () => {
           <MobileNav opened={opened} toggle={toggle} />
         </Box>
       )}
-    </Container>
+    </Box>
   );
 };
 

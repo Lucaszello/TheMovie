@@ -46,7 +46,7 @@ const useStyle = createStyles((theme) => ({
     },
   },
   title: {
-    fontSize: rem(40),
+    fontSize: rem(32),
     color: "white",
     marginTop: 450,
     [theme.fn.smallerThan("md")]: {
@@ -73,7 +73,7 @@ const HeroSectionCarousel = ({ item }: { item: heroSection }) => {
         />
         <Box className={classes.imgContainer}>
           <Box h={"100%"} w={matches ? "100%" : "50%"}>
-            <Box component="h1" className={classes.title}>
+            <Box component="h2" className={classes.title}>
               {item.title}
             </Box>
             <Box

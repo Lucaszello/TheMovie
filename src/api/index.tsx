@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 
@@ -10,10 +11,21 @@ const options = {
   },
 };
 
+//Option2
+const Option2 = {
+  method: "GET",
+  params: { language: "en-US", page: "1" },
+  headers: {
+    accept: "application/json",
+    Authorization:
+      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0NWUyNWQxNzJhNGZlMTUwM2MyMmZhMWJhNDMzMGFkNyIsInN1YiI6IjY0OWZhYTIyOGMwYTQ4MDEwMTc2MDlmMCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.nHrpKIbhhYLQ4ZTHy3VMNyp0BtLSTVflirtC5D7XPA0",
+  },
+};
+
 const popular = async () => {
   const data = await axios.get(
     "https://api.themoviedb.org/3/movie/popular",
-    options
+    Option2
   );
   return data.data.results.slice(0, 8);
 };
@@ -43,16 +55,7 @@ export const useTopRate = (id: number) => {
   });
 };
 
-//Option2
-const Option2 = {
-  method: "GET",
-  params: { language: "en-US", page: "1" },
-  headers: {
-    accept: "application/json",
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0NWUyNWQxNzJhNGZlMTUwM2MyMmZhMWJhNDMzMGFkNyIsInN1YiI6IjY0OWZhYTIyOGMwYTQ4MDEwMTc2MDlmMCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.nHrpKIbhhYLQ4ZTHy3VMNyp0BtLSTVflirtC5D7XPA0",
-  },
-};
+
 
 const FetchPopular = async () => {
   const data = await axios.get(
@@ -186,7 +189,7 @@ export const usePeople = ()  => {
 //tvshow
 const Tv = async (str : string) => {
   const { data } = await axios.get(
-    `https://api.themoviedb.org/3/trending/tv/day`,
+    `https://api.themoviedb.org/3/trending/tv/${str}`,
     Option2
   );
   return data.results
@@ -213,5 +216,17 @@ export const useAir = () => {
     queryKey : ['air'],
     queryFn : Air
   })
+}
 
+const TvDetail = async (id : number )  => {
+  const data = await axios.get(`https://api.themoviedb.org/3/tv/${id}`,Option2);
+  return data.data
+};
+
+
+export const useTvDetail = (id : number) => {
+  return useQuery({
+    queryKey : ["tv-detail",id],
+    queryFn  : () => TvDetail(id)
+  })
 }

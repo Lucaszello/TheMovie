@@ -1,4 +1,4 @@
-import { Box, Container, Skeleton } from "@mantine/core";
+import { Box, Skeleton } from "@mantine/core";
 import { useCredits } from "../../api";
 import { CastProp } from "../../type/type";
 import Reuse from "../reuseable";
@@ -14,7 +14,7 @@ const Credits = ({ id }: { id: number }) => {
     return <HeroLoader/>;
   }
   return (
-    <Container size={"86.5rem"} mt={20}>
+    <Box component="div" px={90} mt={20}>
       <Box
         sx={{
           color: "white",
@@ -86,7 +86,7 @@ const Credits = ({ id }: { id: number }) => {
           </Box>{" "}
         </Box>
       </Link>
-    </Container>
+    </Box>
   );
 };
 

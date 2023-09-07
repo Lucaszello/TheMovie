@@ -46,7 +46,7 @@ const Reuse = ({ children }: any) => {
       setCurrentSlide(slider.track.details.rel);
     },
     created() {
-      setLoaded(true);  
+      setLoaded(true);
     },
     breakpoints: {
       "(max-width : 450px)": {
@@ -66,6 +66,9 @@ const Reuse = ({ children }: any) => {
       },
       "(min-width : 1600px )": {
         slides: { perView: 10, spacing: 25 },
+      },
+      "(min-width : 2000px )": {
+        slides: { perView: 12, spacing: 35 },
       },
     },
   });

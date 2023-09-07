@@ -1,4 +1,4 @@
-import { Box, Container, Skeleton } from "@mantine/core";
+import { Box, Skeleton } from "@mantine/core";
 import { usePopular } from "../../api";
 import { heroSection } from "../../type/type";
 import { lazy, Suspense } from "react";
@@ -16,8 +16,8 @@ const Popular = () => {
     return <h1>isError...</h1>;
   }
   return (
-    <Box my={25} component="section">
-      <Container size={"86.5rem"}>
+    <Box px={90} my={25} component="section">
+      <>
         <Box component="h2" mb={20} sx={{ color: "white" }}>
           Popular Movie
         </Box>
@@ -50,7 +50,7 @@ const Popular = () => {
             ))}
           </Reuse>
         </Box>
-      </Container>
+      </>
     </Box>
   );
 };

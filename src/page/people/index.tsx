@@ -1,4 +1,4 @@
-import { Box, Container, Grid } from "@mantine/core";
+import {  Box, Grid } from "@mantine/core";
 import { usePeople } from "../../api";
 import PeopleBody from "./PeopleBody";
 import { PeopleProp } from "../../type/type";
@@ -13,7 +13,7 @@ const People = () => {
 
 
   return (
-    <Container size={"86.5rem"}>
+    <Box px={90}>
       <Grid columns={12}>
         {data.map((item: PeopleProp) => (
           <Grid.Col lg={2} md={3} sm={4} span={6} key={item.id}>
@@ -21,7 +21,7 @@ const People = () => {
           </Grid.Col>
         ))}
       </Grid>
-    </Container>
+    </Box>
   );
 };
 

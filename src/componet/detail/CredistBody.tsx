@@ -3,8 +3,8 @@ import { CastProp } from "../../type/type";
 
 const useStyles = createStyles({
   img: {
-    width: 150,
-    height: 150,
+    width: 120,
+    height: 120,
     borderRadius: "50%",
     objectFit: "cover",
     objectPosition: "top",
@@ -20,7 +20,7 @@ const CredistBody = ({ item }: { item: CastProp }) => {
         className={classes.img}
         alt=""
       />
-      <Box component="p" w={150} sx={{ color: "white", textAlign: "center" }}>
+      <Box component="p" w={120} sx={{ color: "white", textAlign: "center" }}>
         {item.name}
       </Box>
     </>

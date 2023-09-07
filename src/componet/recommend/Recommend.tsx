@@ -1,4 +1,4 @@
-import { Box, Container, Skeleton } from "@mantine/core";
+import { Box, Skeleton } from "@mantine/core";
 import { useRecommend } from "../../api";
 import { RecommendProp } from "../../type/type";
 import Reuse from "../reuseable";
@@ -16,7 +16,7 @@ const Recommend = ({ id }: { id: number }) => {
   console.log(fix);
   
   return (
-    <Container size={"86.5rem"}>
+    <Box component="div" px={90}>
       <Box component="div">
         <Box
           component="h2"
@@ -70,7 +70,7 @@ const Recommend = ({ id }: { id: number }) => {
           </Box>
         )}
       </Box>
-    </Container>
+    </Box>
   );
 };
 

@@ -1,4 +1,4 @@
-import { Box, Container, Skeleton } from "@mantine/core";
+import { Box, Skeleton } from "@mantine/core";
 import HeroLoader from "../../Loader/heroLoader";
 import { useTv } from "../../api";
 import Reuse from "../../componet/reuseable";
@@ -14,7 +14,7 @@ const Tv = () => {
   }
 
   return (
-    <Container size={"86.5rem"}>
+    <Box px={90}>
       {/* Day */}
       <Box
         component="h2"
@@ -53,7 +53,7 @@ const Tv = () => {
 
       {/* air */}
       <Air />
-    </Container>
+    </Box>
   );
 };
 

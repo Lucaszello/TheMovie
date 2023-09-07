@@ -1,34 +1,22 @@
-import { Box, Container, Grid, Skeleton, createStyles } from "@mantine/core";
+import { Box, Grid, Skeleton } from "@mantine/core";
 import { useUpcoming } from "../../api";
 import { upComingProp } from "../../type/type";
-import {lazy,Suspense} from "react"
+import { lazy, Suspense } from "react";
 import Reuse from "../reuseable";
 import { useMediaQuery } from "@mantine/hooks";
 
-const UpComingBody = lazy(() => import("./UpComingBody"))
-
-const useStyle = createStyles((theme) => ({
-  res : {
-    [theme.fn.smallerThan("md")] : {
-      // display : "none"
-    }
-  }
-}) )
-
+const UpComingBody = lazy(() => import("./UpComingBody"));
 
 const UpComing = () => {
-  const { classes } = useStyle();
   const { data, isLoading } = useUpcoming();
-   const matches = useMediaQuery("(min-width: 60em)");
-
-  
+  const matches = useMediaQuery("(min-width: 60em)");
 
   if (isLoading) {
-    return 
+    return;
   }
 
   return (
-    <Container mt={10} size={"86.5rem"} className={classes.res}>
+    <Box component="div" px={90} mt={10}>
       <Box py={20} component="h2" sx={{ color: "white" }}>
         Upcoming Movie
       </Box>
@@ -81,7 +69,7 @@ const UpComing = () => {
           ))}
         </Reuse>
       )}
-    </Container>
+    </Box>
   );
 };
 
