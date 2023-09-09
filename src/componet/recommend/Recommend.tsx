@@ -65,7 +65,7 @@ const Recommend = ({ id }: { id: number }) => {
         ) : (
           <Box
             component="p"
-            sx={{ color: "white", textDecorationLine: "line-through" }}
+            sx={{ color: "white", textDecorationLine: "line-through" , opacity : 0.5   }}
           >
             Not recommended yet
           </Box>

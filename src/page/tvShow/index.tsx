@@ -5,8 +5,12 @@ import Reuse from "../../componet/reuseable";
 import { tv } from "../../type/type";
 import { lazy, Suspense } from "react";
 import Air from "./Air";
+import { useMediaQuery } from "@mantine/hooks";
 const TvBody = lazy(() => import("./TvBody"));
+
 const Tv = () => {
+  const matches = useMediaQuery("(max-width: 720px)");
+
   const day = useTv("day");
 
   if (day.isLoading) {
@@ -14,7 +18,7 @@ const Tv = () => {
   }
 
   return (
-    <Box px={90}>
+    <Box px={matches ? 30 :  90}>
       {/* Day */}
       <Box
         component="h2"

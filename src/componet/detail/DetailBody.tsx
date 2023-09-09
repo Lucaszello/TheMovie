@@ -45,6 +45,7 @@ const DetailBody = ({ item }: { item: detailProp }) => {
   const matches2 = useMediaQuery("(max-width: 56.25em)");
   const { classes } = useStyle();
   const [open, setOpen] = useState(false);
+  
   return (
     <>
       <Box
@@ -192,24 +193,7 @@ const DetailBody = ({ item }: { item: detailProp }) => {
                 </Box>
               </Box>
 
-              {/* /company name/ */}
-              {/* <Box mt={8} component="div">
-              <h3>Company Name</h3>
-              <Grid pt={10} columns={4}>
-                {item.production_companies.map((item) => item.logo_path !== null ?  
-                  <Grid.Col sx={{ color: "#efececd6" }} span={1}>
-                    <img
-                      className={classes.logoPath}
-                      src={`https://image.tmdb.org/t/p/original/${item?.logo_path}`}
-                      alt=""
-                    />
-                    <p>{item.name}</p>
-                  </Grid.Col>
-                  : 
-                  <></>
-                )}
-              </Grid>
-            </Box> */}
+           
             </Grid.Col>
           </Grid>
         </Box>

@@ -230,3 +230,18 @@ export const useTvDetail = (id : number) => {
     queryFn  : () => TvDetail(id)
   })
 }
+
+//creditTv
+const CreditTv = async (id : number) => {
+  const data = await axios.get(
+    `https://api.themoviedb.org/3/tv/${id}/credits` , Option2
+  );
+  return data.data
+}
+
+export const useCreditsTv = (id : number) => {
+  return useQuery({
+    queryKey : ["creditTv"],
+    queryFn : () => CreditTv(id)
+  })
+}

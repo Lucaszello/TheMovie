@@ -1,10 +1,12 @@
 import { useLocation, useParams } from "react-router-dom";
 import { useSearch } from "../../api";
 import HeroLoader from "../../Loader/heroLoader";
-import TvSearchBody from "./TvSearchBody";
 import { tv } from "../../type/type";
 import { Box, Grid } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
+import NotfoundSearch from "../NotFound/NotfoundSearch";
+import TvSearchBody from "./TvSearchBody";
+
 
 const TvSearch = () => {
   const { pathname } = useLocation();
@@ -21,13 +23,18 @@ const TvSearch = () => {
 
   return (
     <Box px={matches ? 30 : 90 }>
-      <Grid columns={12}>
+      {
+        data.length ? 
+        <Grid columns={12}>
         {data.map((item: tv) => (
           <Grid.Col lg={2} key={item.id}>
             <TvSearchBody item={item} />
           </Grid.Col>
         ))}
       </Grid>
+      :
+      <NotfoundSearch/>
+      }
     </Box>
   );
 };

@@ -1,7 +1,7 @@
 import { useLocation, useParams } from "react-router-dom";
 import { useSearch } from "../../api";
 import { upComingProp } from "../../type/type";
-import NotfoundSearch from "./NotfoundSearch";
+import NotfoundSearch from "../NotFound/NotfoundSearch";
 import { Container, Grid, Skeleton } from "@mantine/core";
 import HeroLoader from "../../Loader/heroLoader";
 import { useMediaQuery } from "@mantine/hooks";
@@ -20,10 +20,11 @@ const SearchMovie = () => {
   if (isLoading) {
     return <HeroLoader />;
   }
+  
 
   return (
     <Container size={"86.5rem"}>
-      {data.length ? (
+      {data.length   ? (
         <Grid columns={12}>
           {data.map((item: upComingProp) => (
             <>

@@ -12,12 +12,21 @@ const CredistBody = lazy(() => import("./CredistBody"));
 const Credits = ({ id }: { id: number }) => {
   const { data, isLoading } = useCredits(id);
   const matches = useMediaQuery("(max-width: 720px)");
-
+  
   if (isLoading) {
     return <HeroLoader/>;
   }
+
+  console.log(data);
+
+  const fix = data?.cast?.filter((item :CastProp) => item?.profile_path);
+  
+  console.log(fix);
+  
+  
+  
   return (
-    <Box component="div" px={ matches ? 30 : 90} mt={20}>
+    <Box component="div" px={matches ? 30 : 90} mt={20}>
       <Box
         sx={{
           color: "white",
@@ -31,34 +40,38 @@ const Credits = ({ id }: { id: number }) => {
         Top Billed Cast
       </Box>
       {/* //reuse kenn slider */}
-      <Reuse key={data.cast[0].id}>
-        {data?.cast?.map((item: CastProp) => (
-          <Box key={item.id}>
-            {item.profile_path && (
-              <Box key={item.id} className="keen-slider__slide number-slide1">
-                <Suspense
-                  fallback={
-                    <Skeleton
-                      width={150}
-                      height={150}
-                      sx={{
-                        "&::after": {
-                          backgroundColor: "#000000db",
-                        },
-                        borderRadius: "50%",
-                      }}
-                    />
-                  }
-                >
-                  <CredistBody item={item} />
-                </Suspense>
-              </Box>
-            )}
-          </Box>
-        ))}
-      </Reuse>
+      {fix.length ? (
+        <Reuse key={data.cast[0].id}>
+          {data?.cast?.map((item: CastProp) => (
+            <Box key={item.id}>
+              {item.profile_path && (
+                <Box key={item.id} className="keen-slider__slide number-slide1">
+                  <Suspense
+                    fallback={
+                      <Skeleton
+                        width={150}
+                        height={150}
+                        sx={{
+                          "&::after": {
+                            backgroundColor: "#000000db",
+                          },
+                          borderRadius: "50%",
+                        }}
+                      />
+                    }
+                  >
+                    <CredistBody item={item} />
+                  </Suspense>
+                </Box>
+              )}
+            </Box>
+          ))}
+        </Reuse>
+      ) : (
+        <Box component="h3" sx={{textDecorationLine : "line-through" , color : "white" , opacity : 0.5}} >Thi Cast is not available now</Box>
+      )}
       {/* // more people  */}
-      <Link style={{textDecoration : "none"}} to={`/people`} >
+      <Link style={{ textDecoration: "none" }} to={`/people`}>
         <Box
           my={20}
           component="p"
