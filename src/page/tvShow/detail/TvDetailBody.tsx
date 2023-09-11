@@ -36,6 +36,7 @@ const useStyle = createStyles((theme) => ({
 const TvDetailBody = ({ item }: { item: tvDetailProp }) => {
   const { classes } = useStyle();
   const matches = useMediaQuery("(max-width: 56.25em)");
+  const matches2 = useMediaQuery("(max-width: 720px)");
 
   const [open, setOpen] = useState(false);
 
@@ -61,7 +62,7 @@ const TvDetailBody = ({ item }: { item: tvDetailProp }) => {
           },
         }}
       >
-        <Box px={90}>
+        <Box px={matches2 ? 30 :  90}>
           <Grid align="center" pt={30} pb={15} columns={12}>
             <Grid.Col lg={3}>
               <img
@@ -76,7 +77,7 @@ const TvDetailBody = ({ item }: { item: tvDetailProp }) => {
                   textAlign: matches ? "center" : "start",
                   marginBottom: matches ? 10 : 0,
                 }}
-                component="h1"
+                component="h2"
               >
                 {item.name}
               </Box>

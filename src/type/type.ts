@@ -157,3 +157,7 @@ export interface tvDetailProp extends tv {
     }[]
     status : string
 }
+
+export interface contactProp {
+  email : string,
+}

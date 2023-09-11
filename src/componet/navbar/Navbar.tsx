@@ -43,7 +43,7 @@ const useStyle = createStyles((theme) => ({
 
 const Navbar = () => {
   const { classes } = useStyle();
-  const matches = useMediaQuery("(max-width: 800px)");
+  const matches = useMediaQuery("(max-width: 720px)");
   const { pathname } = useLocation();
     const [opened, { toggle }] = useDisclosure(false);
     const label = opened ? "Close navigation" : "Open navigation";
