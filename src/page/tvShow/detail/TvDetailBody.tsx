@@ -1,11 +1,11 @@
 import { Box, Flex, Grid, Text, createStyles } from "@mantine/core";
-import { tvDetailProp } from "../../../type/type";
+import {  tvDetailProp } from "../../../type/type";
 import { useMediaQuery } from "@mantine/hooks";
 import { FaPlay } from "react-icons/fa";
 import { useState , lazy , Suspense } from "react";
 import HeroLoader from "../../../Loader/heroLoader";
+import CreditTv from "./CreditTv";
 const Video = lazy(() => import("../../../componet/detail/Video"))
-
 const useStyle = createStyles((theme) => ({
   posterImg: {
     width: 280,
@@ -39,6 +39,8 @@ const TvDetailBody = ({ item }: { item: tvDetailProp }) => {
   const matches2 = useMediaQuery("(max-width: 720px)");
 
   const [open, setOpen] = useState(false);
+
+  
 
   return (
     <div>
@@ -227,6 +229,9 @@ const TvDetailBody = ({ item }: { item: tvDetailProp }) => {
           <Video id={item.id} setOpen={setOpen} />
         </Suspense>
       )}
+
+     
+        <CreditTv id={item.id} />
     </div>
   );
 };

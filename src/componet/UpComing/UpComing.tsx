@@ -10,7 +10,7 @@ const UpComingBody = lazy(() => import("./UpComingBody"));
 const UpComing = () => {
   const { data, isLoading } = useUpcoming();
   const matches2 = useMediaQuery("(max-width: 800px)");
-  const matches = useMediaQuery("(min-width: 60em)");
+  const matches = useMediaQuery("(min-width: 700px)");
 
   if (isLoading) {
     return;
@@ -22,9 +22,9 @@ const UpComing = () => {
         Upcoming Movie
       </Box>
       {matches ? (
-        <Grid columns={5}>
+        <Grid columns={12}>
           {data.map((item: upComingProp) => (
-            <Grid.Col key={item.id} lg={1}>
+            <Grid.Col key={item.id} xs={4} sm={3} md={3} lg={2}>
               <Suspense
                 fallback={
                   <>

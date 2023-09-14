@@ -1,5 +1,5 @@
 import { Box, createStyles } from "@mantine/core";
-import { useState } from "react";
+import { ReactNode, useState } from "react";
 import { FaChevronCircleRight, FaChevronCircleLeft } from "react-icons/fa";
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
@@ -34,7 +34,7 @@ const usestyle = createStyles(() => ({
   },
 }));
 
-const Reuse = ({ children }: any) => {
+const Reuse = ({ children }: {children : ReactNode}) => {
   const { classes } = usestyle();
   //keen
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -52,7 +52,7 @@ const Reuse = ({ children }: any) => {
       "(max-width : 450px)": {
         slides: { perView: 2, spacing: 5 },
       },
-      "(min-width : 451px )": {
+      "(min-width : 450px )": {
         slides: { perView: 3, spacing: 10 },
       },
       "(min-width : 600px )": {
@@ -89,7 +89,7 @@ const Reuse = ({ children }: any) => {
         <>
           <FaChevronCircleLeft
             className={classes.arrow}
-            onClick={(e: any) =>
+            onClick={(e: { stopPropagation: () => Event }) =>
               e.stopPropagation() || instanceRef.current?.prev()
             }
             disabled={currentSlide === 0}
@@ -97,7 +97,7 @@ const Reuse = ({ children }: any) => {
 
           <FaChevronCircleRight
             className={classes.rightArrow}
-            onClick={(e: any) =>
+            onClick={(e: { stopPropagation: () => Event }) =>
               e.stopPropagation() || instanceRef.current?.next()
             }
             disabled={

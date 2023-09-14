@@ -1,28 +1,25 @@
+import { useCreditsTv } from "../../../api"
+import { CastProp } from "../../../type/type";
 import { Box, Skeleton } from "@mantine/core";
-import { useCredits } from "../../api";
-import { CastProp } from "../../type/type";
-import Reuse from "../reuseable";
 import { BsArrowRight } from "react-icons/bs";
 import { lazy, Suspense } from "react";
-import HeroLoader from "../../Loader/heroLoader";
 import { Link } from "react-router-dom";
+import Reuse from "../../../componet/reuseable";
 import { useMediaQuery } from "@mantine/hooks";
-const CredistBody = lazy(() => import("./CredistBody"));
+const CreditTvBody = lazy(() => import("./CreditTvBody") )
 
-const Credits = ({ id }: { id: number }) => {
-  const { data, isLoading } = useCredits(id);
-  const matches = useMediaQuery("(max-width: 720px)");
-  
-  if (isLoading) {
-    return <HeroLoader/>;
-  }
+const CreditTv = ({id} : {id : number}) => {
+    const {data,isLoading} = useCreditsTv(id)
+
+      const matches = useMediaQuery("(max-width: 720px)");
+
+    
+    if(isLoading){
+        return <h1>isLoading...</h1>        
+    }
+    const fix = data?.cast?.filter((item: CastProp) => item?.profile_path);
 
 
-  const fix = data?.cast?.filter((item :CastProp) => item?.profile_path);
-  
-  
-  
-  
   return (
     <Box component="div" px={matches ? 30 : 90} mt={20}>
       <Box
@@ -58,7 +55,7 @@ const Credits = ({ id }: { id: number }) => {
                       />
                     }
                   >
-                    <CredistBody item={item} />
+                    <CreditTvBody item={item} />
                   </Suspense>
                 </Box>
               )}
@@ -66,7 +63,16 @@ const Credits = ({ id }: { id: number }) => {
           ))}
         </Reuse>
       ) : (
-        <Box component="h3" sx={{textDecorationLine : "line-through" , color : "white" , opacity : 0.5}} >Thi Cast is not available now</Box>
+        <Box
+          component="h3"
+          sx={{
+            textDecorationLine: "line-through",
+            color: "white",
+            opacity: 0.5,
+          }}
+        >
+          Thi Cast is not available now
+        </Box>
       )}
       {/* // more people  */}
       <Link style={{ textDecoration: "none" }} to={`/people`}>
@@ -102,6 +108,6 @@ const Credits = ({ id }: { id: number }) => {
       </Link>
     </Box>
   );
-};
+}
 
-export default Credits;
+export default CreditTv
