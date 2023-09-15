@@ -26,7 +26,7 @@ const useStyles = createStyles((theme) => ({
 const PeopleBody = ({item} : {item : PeopleProp}) => {
     const {classes} = useStyles()
   return (
-    <Link style={{textDecoration : "none"}} to={`/people/${item.id}`}>
+    <Link style={{ textDecoration: "none" }} to={`/people/${item.id}`}>
       <Box
         sx={{
           backgroundColor: "#000000db",
@@ -37,7 +37,7 @@ const PeopleBody = ({item} : {item : PeopleProp}) => {
         component="div"
       >
         <img
-          src={`https://image.tmdb.org/t/p/original/${item?.profile_path}`}
+          src={`http://image.tmdb.org/t/p/w500/${item?.profile_path}`}
           alt={item.profile_path}
           className={classes.img}
         />

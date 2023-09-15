@@ -46,7 +46,7 @@ const Comingbody = ({ item }: { item: heroSection }) => {
   return (
     <Box className={classes.container}>
       <img
-        src={`https://image.tmdb.org/t/p/original/${item?.poster_path}`}
+        src={`http://image.tmdb.org/t/p/w500/${item?.poster_path}`}
         alt=""
         className={classes.backImg}
       />

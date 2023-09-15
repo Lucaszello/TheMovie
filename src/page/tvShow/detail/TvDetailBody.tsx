@@ -46,7 +46,7 @@ const TvDetailBody = ({ item }: { item: tvDetailProp }) => {
     <div>
       <Box
         sx={{
-          backgroundImage: `url(https://image.tmdb.org/t/p/original/${item?.backdrop_path})`,
+          backgroundImage: `url(http://image.tmdb.org/t/p/w500/${item?.backdrop_path})`,
           width: "100%",
           color: "white",
           backgroundSize: "cover",
@@ -64,11 +64,11 @@ const TvDetailBody = ({ item }: { item: tvDetailProp }) => {
           },
         }}
       >
-        <Box px={matches2 ? 30 :  90}>
+        <Box px={matches2 ? 30 : 90}>
           <Grid align="center" pt={30} pb={15} columns={12}>
             <Grid.Col lg={3}>
               <img
-                src={`https://image.tmdb.org/t/p/original/${item?.poster_path}`}
+                src={`http://image.tmdb.org/t/p/w500/${item?.poster_path}`}
                 className={classes.posterImg}
                 alt=""
               />
@@ -225,13 +225,12 @@ const TvDetailBody = ({ item }: { item: tvDetailProp }) => {
       </Box>
 
       {open && (
-        <Suspense fallback={<HeroLoader/>}>
+        <Suspense fallback={<HeroLoader />}>
           <Video id={item.id} setOpen={setOpen} />
         </Suspense>
       )}
 
-     
-        <CreditTv id={item.id} />
+      <CreditTv id={item.id} />
     </div>
   );
 };

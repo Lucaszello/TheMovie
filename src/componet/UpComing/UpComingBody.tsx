@@ -38,7 +38,7 @@ const UpComingBody = ({item} : {item : upComingProp}) => {
     <Link to={`/movie/${item.id}`}>
       <Box className={classes.ImgContainer}>
         <img
-          src={`https://image.tmdb.org/t/p/original/${item?.poster_path}`}
+          src={`http://image.tmdb.org/t/p/w500/${item?.poster_path}`}
           alt={item.title}
           className={classes.UpImg}
         />

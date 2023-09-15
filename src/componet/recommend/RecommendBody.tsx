@@ -6,16 +6,23 @@ import { Link } from "react-router-dom";
 const RecommendBody = (item: { item: RecommendProp }) => {
   
   return (
-    <Link style={{textDecoration : "none"}} to={`/movie/${item.item.id}`}>
-      <Box sx={{position : "relative" ,cursor : "pointer", '&:hover .span' : {opacity : 1} }} component="div">
+    <Link style={{ textDecoration: "none" }} to={`/movie/${item.item.id}`}>
+      <Box
+        sx={{
+          position: "relative",
+          cursor: "pointer",
+          "&:hover .span": { opacity: 1 },
+        }}
+        component="div"
+      >
         <img
           height={"100%"}
           width={"100%"}
-          src={`https://image.tmdb.org/t/p/original/${item.item.backdrop_path}`}
+          src={`http://image.tmdb.org/t/p/w500/${item.item.backdrop_path}`}
           alt=""
         />
         <Box
-        component="div"
+          component="div"
           className="span"
           sx={{
             position: "absolute",
@@ -29,7 +36,7 @@ const RecommendBody = (item: { item: RecommendProp }) => {
             justifyContent: "center",
             color: "#ff00008a",
             fontSize: 30,
-            top : 0
+            top: 0,
           }}
         >
           <AiFillPlayCircle />

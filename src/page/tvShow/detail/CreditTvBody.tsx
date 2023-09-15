@@ -16,7 +16,7 @@ const CreditTvBody = ({ item }: { item: CastProp }) => {
   return (
     <>
       <img
-        src={`https://image.tmdb.org/t/p/original/${item?.profile_path}`}
+        src={`http://image.tmdb.org/t/p/w500/${item?.profile_path}`}
         className={classes.img}
         alt=""
       />
