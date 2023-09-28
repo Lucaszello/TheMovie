@@ -20,3 +20,6 @@ react-router-dom + mantine + react-icons
 https://the-movie-2ciq.vercel.app/
 
 
+
+
+

@@ -150,14 +150,19 @@ export interface tvDetailProp extends tv {
       vote_average: number;
     }
   ];
-  genres: 
-    {
-      id: number;
-      name: string;
-    }[]
-    status : string
+  genres: {
+    id: number;
+    name: string;
+  }[];
+  status: string;
 }
 
 export interface contactProp {
-  email : string,
+  email: string;
+}
+
+export interface registerProp {
+  username: string;
+  password: string;
+  email: string;
 }

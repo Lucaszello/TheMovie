@@ -60,9 +60,8 @@ const Footer = () => {
            {
             Nav.map(item =>{
               const isActive = pathname === item.path
-              console.log(isActive);
               
-              return  <Box sx={{listStyle : "none" , marginTop : 10 }} component="li" >
+              return  <Box key={item.name} sx={{listStyle : "none" , marginTop : 10 }} component="li" >
               <Link className={cx(classes.navLink , {[classes.active] : isActive } )} to={item.path} >
                 {item.name }
               </Link>

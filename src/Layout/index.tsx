@@ -1,11 +1,14 @@
 import { MantineProvider } from "@mantine/core";
-import { Outlet } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 import Navbar from "../componet/navbar/Navbar";
 import Footer from "../Footer/Footer";
 
+const Main = () => {
+  const token = false;
 
-
-const Main = ( ) =>  {
+  if (!token) {
+    return <Navigate to={"/login"} />;
+  }
   return (
     <MantineProvider
       withGlobalStyles
@@ -18,11 +21,10 @@ const Main = ( ) =>  {
           xl: "90em",
         },
       }}
-      
     >
-      <Navbar/>
-      <Outlet/>
-      <Footer/>
+      <Navbar />
+      <Outlet />
+      <Footer />
     </MantineProvider>
   );
 };
