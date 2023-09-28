@@ -7,10 +7,11 @@ import {
   createStyles,
 } from "@mantine/core";
 import { Link } from "react-router-dom";
+import Logo from '../image/movie.jpg'
 
 const useStyles = createStyles(() => ({
   imageBg: {
-    backgroundImage: "url(../../public/movie.jpg)",
+    backgroundImage: `url(${Logo})`,
     height: "100vh",
     width: "full",
     backgroundSize: "cover",
@@ -45,7 +46,7 @@ const Login = () => {
       <Box component="div" className={classes.bgBlack}>
         <div className={classes.formWidth}>
           <form action="">
-            <Box component="h1" pb={5} sx={{ color: "#dee1ec" }}>
+            <Box component="h1" pb={5} sx={{ color: "#dee1ec" , textAlign : "center" }}>
               Log in
             </Box>
             <TextInput
