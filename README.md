@@ -1,19 +1,18 @@
 
 # WATCHLIX
 
-This project is using React + Vite + typescript
+This project is using React + Vite + typescript + Node js + Mongodb
 
 Using api https://developer.themoviedb.org/  
 
 
-Coming soon with node js for auth
-
+auth for node js and mongodb
 
 
 
 ## Appendix
 
-react-router-dom + mantine + react-icons
+react-router-dom + mantine + react-icons + express
 
 ## Demo
 
