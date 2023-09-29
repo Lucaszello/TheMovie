@@ -10,13 +10,15 @@ import { Link, useNavigate } from "react-router-dom";
 import { useRegister } from "../api/auth";
 import { useForm } from "@mantine/form";
 import { toast } from "react-toastify";
-import { registerProp } from "../type/type";
-import "react-toastify/dist/ReactToastify.css";
 import { GiCheckMark } from "react-icons/gi";
+import "react-toastify/dist/ReactToastify.css";
+import { registerProp } from "../type/type";
+import Logo from "../image/movie.jpg";
+import { RxCross2 } from "react-icons/rx";
 
 const useStyles = createStyles(() => ({
   imageBg: {
-    backgroundImage: "url(../../public/movie.jpg)",
+    backgroundImage: `url(${Logo})`,
     height: "100vh",
     width: "full",
     backgroundSize: "cover",
@@ -70,24 +72,34 @@ const Register = () => {
 
   const navigate = useNavigate();
 
-  const notify = () => {
-    toast.error("Create account success", {
+  const notify = (text: string, icon: boolean) => {
+    toast.error(text, {
       position: "top-right",
       autoClose: 2000,
       theme: "dark",
-      icon: <GiCheckMark className={classes.icon} />,
+      icon: (
+        <>
+          {icon ? (
+            <GiCheckMark className={classes.icon} />
+          ) : (
+            <RxCross2 className={classes.icon} />
+          )}
+        </>
+      ),
       progressClassName: classes.icon,
     });
   };
-
 
   const handler = (value: registerProp) => {
     register.mutate(value, {
       onSuccess: (data) => {
         if (data.status === 200) {
-          notify();
+          notify("Create account", true);
           return navigate("/login");
         }
+      },
+      onError: () => {
+        notify("Fail account", false);
       },
     });
   };
@@ -122,7 +134,7 @@ const Register = () => {
               {...form.getInputProps("password")}
             />
             <Button
-              disabled={register.isSuccess && true}
+              disabled={register.isLoading && true}
               type="submit"
               size="md"
               sx={{

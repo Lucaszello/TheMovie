@@ -166,3 +166,8 @@ export interface registerProp {
   password: string;
   email: string;
 }
+
+export interface loginProp {
+  email: string;
+  password: string;
+}

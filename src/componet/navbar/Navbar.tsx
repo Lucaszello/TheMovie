@@ -1,6 +1,6 @@
-import { Box, createStyles } from "@mantine/core";
+import { Box, Button, createStyles } from "@mantine/core";
 import { useDisclosure, useMediaQuery } from "@mantine/hooks";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Nav } from "../../api/nav";
 import { motion } from "framer-motion";
 import MobileNav from "./MobileNav";
@@ -12,9 +12,9 @@ const useStyle = createStyles((theme) => ({
     fontFamily: "Black Ops One, cursive",
     fontSize: 30,
     textDecoration: "none",
-    [theme.fn.smallerThan("md")] : {
-      fontSize : 20
-    }
+    [theme.fn.smallerThan("md")]: {
+      fontSize: 20,
+    },
   },
   navUl: {
     display: "flex",
@@ -45,19 +45,21 @@ const Navbar = () => {
   const { classes } = useStyle();
   const matches = useMediaQuery("(max-width: 720px)");
   const { pathname } = useLocation();
-    const [opened, { toggle }] = useDisclosure(false);
-    const label = opened ? "Close navigation" : "Open navigation";
+  const [opened, { toggle }] = useDisclosure(false);
+  const navigate = useNavigate();
+  const label = opened ? "Close navigation" : "Open navigation";
 
-  
+  //placeholder
+  const placeholder = pathname === "/" ? "movie" : pathname.split("/")[1];
 
-    //placeholder
-    const placeholder   = pathname === "/" ? "movie" : pathname.split("/")[1] ;
-    
-    
-   
+  //localstorage
+  const removeLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/login");
+  };
 
   return (
-    <Box component="div" px={ matches ? 30 : 90} py={15}>
+    <Box component="div" px={matches ? 30 : 90} py={15}>
       <Box
         sx={{
           display: "flex",
@@ -97,7 +99,7 @@ const Navbar = () => {
             })}
           </Box>
           {/* // search */}
-        <SearchBox placeholder={placeholder} />
+          <SearchBox placeholder={placeholder} />
           {matches && (
             <Burger
               ml={10}
@@ -107,6 +109,11 @@ const Navbar = () => {
               aria-label={label}
             />
           )}
+
+          {/* logout */}
+          <Button onClick={removeLogout} ml={10} color="red">
+            Log out
+          </Button>
         </Box>
       </Box>
       {matches && (
