@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Login from "./auth/Login";
+// import Login from "./auth/Login";
 import Main from "./Layout";
 import Home from "./componet";
 import Detail from "./componet/detail/Detail";
@@ -9,14 +9,14 @@ import SearchMovie from "./page/Movie/SearchMovie";
 import PeopleDetail from "./page/people/Detail/PeopleDetail";
 import TvSearch from "./page/tvShow/TvSearch";
 import TvDetail from "./page/tvShow/detail/TvDetail";
-import Register from "./auth/Register";
+// import Register from "./auth/Register";
 
 const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+        {/* <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} /> */}
         <Route element={<Main />}>
           <Route path="/" element={<Home />} />
           <Route path="/movie/:id" element={<Detail />} />

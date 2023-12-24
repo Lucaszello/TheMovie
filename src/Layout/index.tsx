@@ -7,9 +7,10 @@ import HeroLoader from "../Loader/heroLoader";
 const Main = () => {
   const [loading, setLoading] = useState(true);
 
-  const reget: string | null = localStorage.getItem("token");
+  // const reget: string | null = localStorage.getItem("token");
 
-  const token = reget && JSON.parse(reget);
+  const token = true
+  // const token = reget && JSON.parse(reget);
 
   useEffect(() => {
     if (!token) {
